@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="lib/css/bootstrap.min.css" rel="stylesheet">
+	<link href="styles/main.css" rel="stylesheet">
+</head>
+<body class="store_me">
+
+<div role="tabpanel">
+	<ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#view" aria-controls="home" role="tab" data-toggle="tab">View</a></li>
+		<li role="presentation"><a href="#add" aria-controls="profile" role="tab" data-toggle="tab">Add</a></li>
+	</ul>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="view">
+			<br/>
+			<ul class="list-group">
+				<li class="list-group-item">
+					<h4 class="list-group-item-heading">List group item heading</h4>
+					<p class="list-group-item-text">.Dapibus ac facilisis inDapibus ac facilisis in</p>
+				</li>
+			</ul>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="add">
+			<br/>
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<div class="col-sm-12">
+						<input type="text" class="form-control input-sm" id="name" placeholder="Name">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-lg-6">
+								<input type="text" class="form-control input-sm" id="user" placeholder="User">
+							</div>
+							<div class="col-xs-6 col-sm-6 col-lg-6">
+								<input type="text" class="form-control input-sm" id="password" placeholder="Password">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<textarea name="details" id="details" class="form-control input-sm" rows="3" placeholder="details" style="width:100%"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<button type="submit" id="save" class="btn btn-default">Save</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+<script src="lib/js/jquery-2.1.1.min.js"></script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="scripts/popup.js"></script>
+</body>
+</html>
