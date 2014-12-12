@@ -43,6 +43,7 @@
     }
   ],
   "permissions": [
+    "storage",
     "tabs",
     "http://*/*",
     "https://*/*"

@@ -1,4 +1,9 @@
-.store_me {
-  width:600px;
-  padding:10px;
+.store_me{
+	width   :600px;
+	padding :10px;
+}
+
+#accordion{
+	max-height :450px;
+	overflow   :auto;
 }
