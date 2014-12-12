@@ -9,11 +9,15 @@
 
 <div role="tabpanel">
 	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation" class="active"><a href="#view" aria-controls="home" role="tab" data-toggle="tab">View</a></li>
-		<li role="presentation"><a href="#add" aria-controls="profile" role="tab" data-toggle="tab">Add</a></li>
+		<li role="presentation" class="active"><a href="#view" aria-controls="view" role="tab" data-toggle="tab">View</a></li>
+		<li role="presentation"><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add</a></li>
+		<li role="presentation"><a href="#export" aria-controls="export" role="tab" data-toggle="tab">Import/Export</a></li>
+		<li role="presentation"><a href="#help" aria-controls="help" role="tab" data-toggle="tab">Help</a></li>
 	</ul>
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane active" id="view">
+			<br/>
+			<input type="text" id="search" name="search" class="form-control input-sm" placeholder="Quick search" data-list="#accordion"/>
 			<br/>
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				Nothing here
@@ -40,13 +44,41 @@
 				</div>
 			</form>
 		</div>
+		<div role="tabpanel" class="tab-pane" id="export">
+			<br/>
+			<textarea class="form-control input-sm" rows="10" id="export_content"></textarea>
+			<br/>
+			<textarea class="form-control input-sm" rows="10" id="import_content"></textarea>
+			<button type="submit" id="import" class="btn btn-default">Import</button>
+			<span class="alert alert-info" id="import_alert" style="display:none">Data imported</span>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="help">
+			<br/>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					View individual data by clicking on the specific tab. Quick search i also available.
+					Remove individual data by clicking the remove button.
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					Add data by entering a name and details in the "Add" tab. The "Details" section can be anything, all HTML will be parsed.
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					!!! Important !!! Your saved data is not saved online, only on your local machine. To move it to another machine you have
+					 to save your data to a text file and import it into the new browser extension.
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
 
-
 <script src="lib/js/jquery-2.1.1.min.js"></script>
 <script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/js/jquery.hideseek.min.js"></script>
 <script src="scripts/popup.js"></script>
 </body>
 </html>
