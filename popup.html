@@ -8,67 +8,80 @@
 <body class="store_me">
 
 <div role="tabpanel">
-	<ul class="nav nav-tabs" role="tablist">
-		<li role="presentation" class="active"><a href="#view" aria-controls="view" role="tab" data-toggle="tab">View</a></li>
-		<li role="presentation"><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add</a></li>
-		<li role="presentation"><a href="#export" aria-controls="export" role="tab" data-toggle="tab">Import/Export</a></li>
-		<li role="presentation"><a href="#help" aria-controls="help" role="tab" data-toggle="tab">Help</a></li>
-	</ul>
-	<div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="view">
-			<br/>
-			<input type="text" id="search" name="search" class="form-control input-sm" placeholder="Quick search" data-list="#accordion"/>
-			<br/>
-			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-				Nothing here
-			</div>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="add">
-			<br/>
-			<form class="form-horizontal" role="form">
-				<div class="form-group">
-					<div class="col-sm-12">
-						<input type="text" class="form-control input-sm" id="name" placeholder="Name" required>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-12">
-						<textarea name="details" id="details" class="form-control input-sm" rows="4" placeholder="Details" required style="width:100%"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-12">
-						<button type="submit" id="save" class="btn btn-default">Save</button>
-						<span class="alert alert-info" id="alert" style="display:none">Data saved</span>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="export">
-			<br/>
-			<textarea class="form-control input-sm" rows="10" id="export_content"></textarea>
-			<br/>
-			<textarea class="form-control input-sm" rows="10" id="import_content"></textarea>
-			<button type="submit" id="import" class="btn btn-default">Import</button>
-			<span class="alert alert-info" id="import_alert" style="display:none">Data imported</span>
-		</div>
-		<div role="tabpanel" class="tab-pane" id="help">
-			<br/>
-			<div class="panel panel-default">
-				<div class="panel-body">
-					View individual data by clicking on the specific tab. Quick search i also available.
-					Remove individual data by clicking the remove button.
+	<div id="patternLoginContainer" style="display:none"></div>
+
+	<div id="main_content" style="display:none">
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#view" aria-controls="view" role="tab" data-toggle="tab">View</a></li>
+			<li role="presentation"><a href="#add" aria-controls="add" role="tab" data-toggle="tab">Add</a></li>
+			<li role="presentation"><a href="#export" aria-controls="export" role="tab" data-toggle="tab">Import/Export</a></li>
+			<li role="presentation"><a href="#help" aria-controls="help" role="tab" data-toggle="tab">Settings/Help</a></li>
+		</ul>
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="view">
+				<br/>
+				<input type="text" id="search" name="search" class="form-control input-sm" placeholder="Quick search" data-list="#accordion"/>
+				<br/>
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					Nothing here
 				</div>
 			</div>
-			<div class="panel panel-default">
-				<div class="panel-body">
-					Add data by entering a name and details in the "Add" tab. The "Details" section can be anything, all HTML will be parsed.
-				</div>
+			<div role="tabpanel" class="tab-pane" id="add">
+				<br/>
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+						<div class="col-sm-12">
+							<input type="text" class="form-control input-sm" id="name" placeholder="Name" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<textarea name="details" id="details" class="form-control input-sm" rows="4" placeholder="Details" required style="width:100%"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<button type="submit" id="save" class="btn btn-default">Save</button>
+							<span class="alert alert-info" id="alert" style="display:none">Data saved</span>
+						</div>
+					</div>
+				</form>
 			</div>
-			<div class="panel panel-default">
-				<div class="panel-body">
-					!!! Important !!! Your saved data is not saved online, only on your local machine. To move it to another machine you have
-					 to save your data to a text file and import it into the new browser extension.
+			<div role="tabpanel" class="tab-pane" id="export">
+				<br/>
+				<textarea class="form-control input-sm" rows="10" id="export_content"></textarea>
+				<br/>
+				<textarea class="form-control input-sm" rows="10" id="import_content"></textarea>
+				<br/>
+				<button type="submit" id="import" class="btn btn-default">Import</button>
+				<span class="alert alert-info" id="import_alert" style="display:none">Data imported</span>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="help">
+				<br/>
+
+				<div class="panel panel-default">
+					<div class="panel-body" id="patternContainer_container">
+						<p class="alert alert-warning">
+							Setup a pattern lock. Once the pattern is setup, all data will be locked. <strong class="text-danger">If you forgot your pattern,
+							reinstall the app but all data will be lost.</strong> To change the pattern, simply enter a new one.
+							<button class="btn" id="remove_pattern">Remove Pattern</button>
+						</p>
+
+						<div id="patternContainer"></div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<p>
+							View individual data by clicking on the specific tab. Quick search i also available.
+							Remove individual data by clicking the remove button.
+						</p>
+						<p>Add data by entering a name and details in the "Add" tab. The "Details" section can be anything, all HTML will be parsed.</p>
+						<p>
+							!!! Important !!! Your saved data is not saved online, only on your local machine. To move it to another machine you have
+							to save your data to a text file and import it into the new browser extension.
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -79,6 +92,7 @@
 <script src="lib/js/jquery-2.1.1.min.js"></script>
 <script src="lib/js/bootstrap.min.js"></script>
 <script src="lib/js/jquery.hideseek.min.js"></script>
+<script src="lib/js/patternLock.min.js"></script>
 <script src="scripts/popup.js"></script>
 </body>
 </html>
