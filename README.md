@@ -3,7 +3,7 @@ StoreMe
 
 Store Me - offline data storage
 
-https://chrome.google.com/webstore/detail/areatime/geiblkaaibihclncpdljbfdbhbokelbg?hl=en&gl=US
+https://chrome.google.com/webstore/detail/hcbmgkjgccgcheamdaoclehiafbgpjgi
 
 Copyright (c) 2014 Cristi Citea
 
