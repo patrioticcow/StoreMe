@@ -9,6 +9,7 @@
 
 <div role="tabpanel">
 	<div id="patternLoginContainer" style="display:none"></div>
+	<div id="alert_match"></div>
 
 	<div id="main_content" style="display:none">
 		<ul class="nav nav-tabs" role="tablist">
@@ -32,11 +33,13 @@
 					<div class="form-group">
 						<div class="col-sm-12">
 							<input type="text" class="form-control input-sm" id="name" placeholder="Name" required>
+							<div id="alert_name"></div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-12">
 							<textarea name="details" id="details" class="form-control input-sm" rows="4" placeholder="Details" required style="width:100%"></textarea>
+							<div id="alert_details"></div>
 						</div>
 					</div>
 					<div class="form-group">
@@ -55,6 +58,7 @@
 				<br/>
 				<button type="submit" id="import" class="btn btn-default">Import</button>
 				<span class="alert alert-info" id="import_alert" style="display:none">Data imported</span>
+				<div id="alert_import"></div>
 			</div>
 			<div role="tabpanel" class="tab-pane" id="help">
 				<br/>
@@ -66,6 +70,8 @@
 							reinstall the app but all data will be lost.</strong> To change the pattern, simply enter a new one.
 							<button class="btn" id="remove_pattern">Remove Pattern</button>
 						</p>
+
+						<div id="alerts"></div>
 
 						<div id="patternContainer"></div>
 					</div>

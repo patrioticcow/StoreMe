@@ -10,9 +10,10 @@ chrome.storage.sync.get('pattern', function (data) {
 			onDraw: function (pattern) {
 				chrome.storage.sync.get('pattern', function (data) {
 					if (parseInt(data.pattern) !== parseInt(pattern)) {
-						alert("Patterns don't match");
+						$('#alert_match').html('<div class="alert alert-danger">Patterns don\'t match</div>');
 					} else {
 						$('#patternLoginContainer').hide();
+						$('#alert_match').html('');
 						$('#main_content').show();
 						$('.store_me').css({width: '800px'});
 					}
@@ -29,7 +30,7 @@ chrome.storage.sync.get('pattern', function (data) {
 $('#remove_pattern').on("click", function () {
 	chrome.storage.sync.remove('pattern');
 	chrome.storage.sync.remove('pattern_temp');
-	alert("Patterns removed");
+	$('#alerts').html('<div class="alert alert-info">Patterns removed</div>');
 });
 
 var lock = new PatternLock("#patternContainer", {
@@ -38,14 +39,14 @@ var lock = new PatternLock("#patternContainer", {
 		chrome.storage.sync.get('pattern_temp', function (data) {
 			if (isEmpty(data)) {
 				chrome.storage.sync.set({pattern_temp: pattern});
-				alert('Enter your pattern again');
+				$('#alerts').html('<div class="alert alert-info">Enter your pattern again</div>');
 			} else {
 				if (parseInt(data.pattern_temp) === parseInt(pattern)) {
 					chrome.storage.sync.set({pattern: pattern});
 					chrome.storage.sync.remove('pattern_temp');
-					alert("Pattern set successfully");
+					$('#alerts').html('<div class="alert alert-success">Pattern set successfully</div>');
 				} else {
-					alert("Patterns don't match");
+					$('#alerts').html('<div class="alert alert-warning">Patterns don\'t match</div>');;
 				}
 			}
 		});
@@ -61,8 +62,9 @@ $('#save').on("click", function () {
 	var time = new Date().getTime();
 
 	if (name.val().length === '' || name.val().length === 0) {
-		alert('Enter a name');
+		$('#alert_name').html('<div class="alert alert-warning">The Name is required</div>')
 	} else {
+		//console.log(details.val());
 		var obj = {};
 		obj[time] = {name: name.val(), details: details.val()};
 		chrome.storage.sync.set(obj, function () {
@@ -82,7 +84,7 @@ $('#import').on("click", function () {
 	var importContent = $('#import_content');
 
 	if (importContent.val().length === '' || importContent.val().length === 0) {
-		alert('Nothing to import');
+		$('#alert_import').html('<div class="alert alert-warning">Nothing to import</div>')
 	} else {
 		chrome.storage.sync.set(JSON.parse(importContent.val()), function () {
 			$('#import_alert').show();
@@ -191,8 +193,8 @@ function getColapsable(key, obj) {
 	html += '       </h4>';
 	html += '   </div>';
 	html += '   <div id="collapse' + key + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + key + '">';
-	html += '       <div class="panel-body">';
-	html += '           <div id="shown_details_' + key + '">' + obj.details + '</div>';
+	html += '       <div class="panel-body" style="padding:3px">';
+	html += '           <div id="shown_details_' + key + '" style="white-space: pre ; display: block; unicode-bidi: embed">' + obj.details + '</div>';
 	html += '           <div id="edit_details_' + key + '" style="display:none">';
 	html += '				<input type="hidden" id="content_name_' + key + '" value="' + obj.name + '"/>';
 	html += '               <textarea name="edit_details" id="new_content_' + key + '" class="form-control input-sm" rows="10">' + obj.details + '</textarea><br>';
